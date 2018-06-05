@@ -6,3 +6,5 @@ select m.ename ,count(*)  "Emp Number" from emp e,emp m where e.mgr = m.empno gr
 select grade from emp,salgrade where emp.sal between salgrade.losal and salgrade.hisal group by grade having count(empno) = ( select max(count(empno)) from emp,salgrade where emp.sal between salgrade.losal and salgrade.hisal group by grade)
 4)
 select ename , sal, grade,job from emp,salgrade,dept where emp.sal between salgrade.losal and salgrade.hisal and emp.deptno = dept.deptno and dname =  (select dname  from emp,dept where  emp.deptno = dept.deptno group by dname having max(sal) = (select max(max(sal)) from emp,dept where emp.deptno = dept.deptno  group by dname))
+
+new
